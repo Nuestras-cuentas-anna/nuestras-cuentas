@@ -13,7 +13,7 @@ const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),p
 const $=id=>document.getElementById(id), euros=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n);
 let unsubscribe=null,records=[],editing=null,me=null;
 // Introducir los dos UID después de que ambas personas hayan iniciado sesión.
-const ALLOWED_UIDS=['8XRZOH9NYUNrDF3k5dobbpOJLEF3'];
+const ALLOWED_UIDS=['8XRZOH9NYUNrDF3k5dobbpOJLEF3','HBDJuKmdnGSmOxpu2rLghZdZ6573'];
 const people=()=>[{uid:ALLOWED_UIDS[0],name:'Yo'},...(ALLOWED_UIDS[1]?[{uid:ALLOWED_UIDS[1],name:'Mi amiga'}]:[])];
 function error(e){$('status').textContent=e?.message||String(e)}
 $('login').onclick=async()=>{try{await signInWithPopup(auth,provider)}catch(e){if(e.code==='auth/popup-blocked'){try{await signInWithRedirect(auth,provider)}catch(err){error(err)}}else error(e)}};
